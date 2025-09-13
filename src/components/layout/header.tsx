@@ -5,11 +5,8 @@ import { HeaderIcon } from "./header-icon"
 import Link from "next/link"
 import { useState } from "react"
 import { HeaderSearch } from "./header-search"
+import { MenuItem } from "@/types/menu-item"
 
-type MenuItem = {
-  label: string;
-  href: string;
-}
 
 export function Header() {
 
