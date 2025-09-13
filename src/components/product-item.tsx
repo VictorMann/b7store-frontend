@@ -43,7 +43,7 @@ export const ProductItem = ({ item }: Props) => {
           }
         </div>
       </div>
-      <div>
+      <div className="flex justify-center">
         <Link href={link}>
           <Image 
             src={item.image} 

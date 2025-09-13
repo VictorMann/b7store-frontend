@@ -6,8 +6,8 @@ export const MostSoldProducts = async () => {
 
   return (
     <div className="mt-10">
-      <h2 className="text-2xl">Produtos mais vendidos</h2>
-      <p className="text-gray-500">Campeões de vendas da nossa loja.</p>
+      <h2 className="text-2xl text-center md:text-left">Produtos mais vendidos</h2>
+      <p className="text-gray-500 text-center md:text-left">Campeões de vendas da nossa loja.</p>
 
       <div className="mt-9">
         <ProductList list={data.products} />
