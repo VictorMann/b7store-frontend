@@ -2,6 +2,7 @@
 
 import { useQueryString } from "@/hooks/use-querystring";
 import { ChangeEvent, useState } from "react"
+import { FilterGroup } from "./filter-group";
 
 export const ProductListFilter = () => {
   const queryString = useQueryString();
@@ -37,7 +38,10 @@ export const ProductListFilter = () => {
       </div>
 
       <div className="mt-8 flex flex-col md:flex-row gap-8">
-        <div className={`flex-1 md:max-w-70 ${filterOpened ? 'block' : 'hidden'} md:block`}>filtro</div>
+        <div className={`flex-1 md:max-w-70 ${filterOpened ? 'block' : 'hidden'} md:block`}>
+          <FilterGroup id="tech" name="Tecnologia" />
+          <FilterGroup id="color" name="Cores" />
+        </div>
         <div className="flex-1 grid grid-cols-1 md:grid-cols-3">
           <div className="a">...</div>
           <div className="a">...</div>
