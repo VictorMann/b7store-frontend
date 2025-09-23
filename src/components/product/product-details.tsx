@@ -1,3 +1,5 @@
+"use client"
+
 import { ProductComplete } from "@/types/product"
 import Image from "next/image"
 
