@@ -10,7 +10,7 @@ type Props = {
 export const ProductDetails = ({ product }: Props) => {
 
   const AddToCart = () => {
-
+    
   };
 
   return (
