@@ -57,7 +57,7 @@ export function Header() {
             <Link href={'/my-orders'}>
               <HeaderIcon src="/assets/ui/user-line.png" alt="Perfil" />
             </Link>
-            <Link href={'/my-orders'}>
+            <Link href={'/cart'}>
               <HeaderIcon src="/assets/ui/shopping-bag-4-line.png" alt="Cart" />
             </Link>
             <div className="md:hidden" onClick={() => setMenuOpened(!menuOpened)}>

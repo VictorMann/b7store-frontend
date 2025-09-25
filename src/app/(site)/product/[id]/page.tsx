@@ -4,7 +4,7 @@ import { ProductDescription } from "@/components/product/product-description";
 import { ProductDetails } from "@/components/product/product-details";
 import { RelatedProducts } from "@/components/product/related-products";
 import { RelatedProdutsSkeleton } from "@/components/product/related-products-skeleton";
-import { data } from "@/data";
+import { data as d } from "@/data";
 import Link from "next/link";
 import { Suspense } from "react";
 
@@ -14,6 +14,10 @@ type Props = {
 
 export default async function Page({ params }: Props) {
   const { id } = await params;
+  let data: any = {...d};
+  const dataItem = d.prodsEx.find(item => item.id === parseInt(id));
+  if (dataItem) data = { product: dataItem };
+  
 
   return (
     <div>
