@@ -1,6 +1,22 @@
 import { CartItem } from "@/types/cart-item";
 import { cookies } from "next/headers";
 
+// AUTH COOKIE
+export const getServerAuthToken = async () => {
+  const cookieStore = await cookies();
+  return cookieStore.get('auth_token')?.value || null;
+}
+
+export const setServerAuthToken = async (token: string) => {
+  const cookieStore = await cookies();
+  cookieStore.set('auth_token', token, { httpOnly: true });
+}
+
+export const clearServerAuthToken = async () => {
+  const cookieStore = await cookies();
+  cookieStore.delete('auth_token');
+}
+
 export const getServerCart = async (): Promise<CartItem[]> => {
   const cookieStore = await cookies();
   const value = cookieStore.get('cart')?.value;
