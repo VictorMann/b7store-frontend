@@ -1,5 +1,6 @@
 "use client"
 
+import { getShippingInfo } from "@/actions/get-shipping.info";
 import { getUserAddresses } from "@/actions/get-user-addresses";
 import { useAuthStore } from "@/store/auth";
 import { useCartStore } from "@/store/cart"
@@ -20,8 +21,32 @@ export const ShippingBoxLogged = () => {
     }
   }, [token, hydrated]);
 
+  useEffect(() => {
+    if (cartStore.selectedAddressId) {
+      updateShippingInfo();
+    }
+  }, [cartStore.selectedAddressId]);
+
   const handleSelectedAddress = (e: ChangeEvent<HTMLSelectElement>) => {
-    cartStore.setSelectedAddressId(Number(e.target.value));
+    cartStore.clearShipping();
+    const id = parseInt(e.target.value);
+    if (id) {
+      const address = addresses.find(addr => addr.id === id);
+      if (address) {
+        cartStore.setShippingZipcode(address.zipcode);
+        cartStore.setSelectedAddressId(id);
+      }
+    }
+  };
+
+  const updateShippingInfo = async () => {
+    if (cartStore.shippingZipcode.length > 4) {
+      const shippingInfo = await getShippingInfo(cartStore.shippingZipcode);
+      if (shippingInfo) {
+        cartStore.setShippingCost(shippingInfo.cost);
+        cartStore.setShippingDays(shippingInfo.days);
+      }
+    }
   };
 
   const handleAddAddressButton = () => {
