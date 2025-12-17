@@ -27,7 +27,8 @@ export default async function Page({ params, searchParams }: Props) {
 
       <ProductListFilter 
         category={categoryWithMetadata.category} 
-        metadata={categoryWithMetadata.metadata} />
+        metadata={categoryWithMetadata.metadata}
+        filters={filters} />
 
     </div>
   )
