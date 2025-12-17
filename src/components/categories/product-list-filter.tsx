@@ -5,8 +5,14 @@ import { ChangeEvent, useState } from "react"
 import { FilterGroup } from "./filter-group";
 import { data } from "@/data";
 import { ProductItem } from "../product-item";
+import { Category, CategoryMetadata } from "@/types/category";
 
-export const ProductListFilter = () => {
+type Props = {
+  category: Category;
+  metadata: CategoryMetadata[];
+}
+
+export const ProductListFilter = ({ category, metadata }: Props) => {
   const queryString = useQueryString();
   const [filterOpened, setFilterOpened] = useState(false);
   
@@ -41,8 +47,9 @@ export const ProductListFilter = () => {
 
       <div className="mt-8 flex flex-col md:flex-row gap-8">
         <div className={`flex-1 md:max-w-70 ${filterOpened ? 'block' : 'hidden'} md:block`}>
-          <FilterGroup id="tech" name="Tecnologia" />
-          <FilterGroup id="color" name="Cores" />
+          {metadata.map(item => (
+            <FilterGroup key={item.id} id={item.id} name={item.name} values={item.values} />
+          ))}
         </div>
         <div className="flex-1 grid grid-cols-1 md:grid-cols-3 gap-4">
           {data.products.map(item => (

@@ -14,7 +14,7 @@ export function Header() {
 
 
   const menu: MenuItem[] = [
-    {label: 'Camisa', href: '/categories/camisa'},
+    {label: 'Camisetas', href: '/categories/camiseta'},
     {label: 'Kits', href: '/categories/kit'},
   ];
 
